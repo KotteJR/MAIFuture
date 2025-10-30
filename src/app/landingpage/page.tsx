@@ -13,6 +13,7 @@ export default function LandingPage() {
       <About />
       <FocusShowcase />
       <Contact />
+      <Footer />
     </div>
   )
 }

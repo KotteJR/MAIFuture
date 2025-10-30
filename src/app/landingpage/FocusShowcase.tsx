@@ -20,7 +20,7 @@ export default function FocusShowcase() {
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
             Our Strategic Focus Areas
             </h2>
-            <p className="mt-4 text-md text-gray-600 leading-relaxed max-w-lg">
+            <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
               &quot;From Risk To Relief&quot; — our mission is to transform lives through technology by enabling earlier detection,
               clearer clinical decisions, and more compassionate care for every patient and provider we serve.
             </p>
