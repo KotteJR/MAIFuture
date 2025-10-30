@@ -1,12 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.lottie$/,
-      type: 'asset/resource',
-    });
-    return config;
-  },
-}
+const nextConfig = {}
 
 module.exports = nextConfig
