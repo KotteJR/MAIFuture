@@ -11,7 +11,11 @@ export default function About() {
 
   return (
     <section className="bg-white md:pb-12 pb-6">
-      <div className="max-w-7xl px-6 lg:px-4 mx-auto">
+      <div className="max-w-7xl px-6 md:px-8 lg:px-12 mx-auto">
+
+        <h2 className="text-4xl lg:text-5xl font-italic text-black leading-tight mb-6">
+        Why this matters
+          </h2>
 
         {/* Intro Paragraph with Scroll Fill Effect */}
           <div className="">
