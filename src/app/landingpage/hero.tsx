@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="h-screen flex items-center justify-center bg-white relative overflow-hidden">
+    <section id="hero" className="h-screen flex items-center justify-center bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-4">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           {/* Left Column */}

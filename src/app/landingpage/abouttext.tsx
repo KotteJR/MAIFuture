@@ -10,7 +10,7 @@ export default function About() {
   useEffect(() => {}, []);
 
   return (
-    <section className="bg-white pb-12">
+    <section className="bg-white md:pb-12 pb-6">
       <div className="max-w-7xl px-6 lg:px-4 mx-auto">
 
         {/* Intro Paragraph with Scroll Fill Effect */}

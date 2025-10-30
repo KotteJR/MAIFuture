@@ -12,7 +12,7 @@ export default function FocusShowcase() {
   ];
 
   return (
-    <section className="bg-white py-24">
+    <section id="features" className="bg-white md:py-24 py-12">
       <div className="max-w-7xl px-6 lg:px-4 mx-auto">
         {/* Top split: copy left, image right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center py-12">
@@ -34,7 +34,7 @@ export default function FocusShowcase() {
         </div>
 
         {/* Icons grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-8 mt-14">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-8 md:mt-14">
           {items.map(({ icon: Icon, title, description }, i) => (
             <div key={i} className="flex flex-col">
               <div className="h-12 w-12 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center">

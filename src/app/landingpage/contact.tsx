@@ -11,7 +11,7 @@ export default function Contact() {
   const closeModal = () => setOpen(false);
 
   return (
-    <section className="bg-white py-24">
+    <section id="contact" className="bg-white md:py-24 py-12">
       <div className="max-w-7xl px-6 lg:px-4 mx-auto">
         {/* Intro */}
         <div className="mb-10 ">
