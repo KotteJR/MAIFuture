@@ -11,7 +11,7 @@ export default function Hero() {
             <p className="text-gray-600 mb-8 max-w-xl lg:text-lg">
             Revolutionizing healthcare through AI-powered lung cancer screening solutions. Building the future of early detection and prevention in North Macedonia.
             </p>
-            <form className="flex w-full lg:w-[420px] items-center gap-2 justify-start lg:justify-start">
+            <form className="flex w-[420px] items-center gap-2 justify-start lg:justify-start">
               <input
                 type="email"
                 placeholder="your@email.com"
