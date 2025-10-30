@@ -21,7 +21,7 @@ export default function FocusShowcase() {
             Our Strategic Focus Areas
             </h2>
             <p className="mt-4 text-md text-gray-600 leading-relaxed max-w-lg">
-              "From Risk To Relief" — our mission is to transform lives through technology by enabling earlier detection,
+              &quot;From Risk To Relief&quot; — our mission is to transform lives through technology by enabling earlier detection,
               clearer clinical decisions, and more compassionate care for every patient and provider we serve.
             </p>
           </div>

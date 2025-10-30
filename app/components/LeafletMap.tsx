@@ -9,16 +9,24 @@ type LeafletMapProps = {
   className?: string;
 };
 
-export default function LeafletMap({ center, zoom = 4, className }: LeafletMapProps) {
+export default function LeafletMapComponent({ center, zoom = 4, className }: LeafletMapProps) {
   return (
-    <MapContainer center={center} zoom={zoom} className={className} scrollWheelZoom={true} style={{ width: '100%', height: '100%' }}>
+    <MapContainer {...({ center, zoom, className, scrollWheelZoom: true, style: { width: '100%', height: '100%' } } as any)}>
       {/* Light basemap with subtle blue accents */}
       <TileLayer
-        attribution='&copy; OpenStreetMap contributors &copy; CARTO'
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
+        {...({
+          attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+          url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+        } as any)}
       />
       {/* Blue dot for Skopje */}
-      <CircleMarker center={center} radius={3} pathOptions={{ color: '#1d4ed8', weight: 2, fillColor: '#0063FF', fillOpacity: 0.8 }}>
+      <CircleMarker
+        {...({
+          center,
+          radius: 3,
+          pathOptions: { color: '#1d4ed8', weight: 2, fillColor: '#0063FF', fillOpacity: 0.8 },
+        } as any)}
+      >
         <Popup>Skopje</Popup>
       </CircleMarker>
     </MapContainer>
