@@ -9,7 +9,7 @@ export default function Hero() {
     e.preventDefault()
     setStatus('loading')
     try {
-      const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) })
+      const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'hero' }) })
       setStatus(res.ok ? 'ok' : 'err')
     } catch {
       setStatus('err')

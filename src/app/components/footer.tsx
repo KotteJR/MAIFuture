@@ -1,6 +1,20 @@
+"use client";
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle'|'loading'|'ok'|'err'>('idle')
+  async function submit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'footer' }) })
+      setStatus(res.ok ? 'ok' : 'err')
+    } catch {
+      setStatus('err')
+    }
+  }
   return (
     <footer className="bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-6 py-8">
@@ -26,17 +40,20 @@ export default function Footer() {
 
 
           {/* CTA */}
-          <form className="w-full max-w-md md:w-auto">
+          <form onSubmit={submit} className="w-full max-w-md md:w-auto">
             <label htmlFor="footer-email" className="sr-only">Email</label>
             <div className="flex gap-2">
               <input
                 id="footer-email"
                 type="email"
                 placeholder="your@email.com"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                required
                 className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
               />
-              <button type="button" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800">
-                Sign up
+              <button type="submit" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-60" disabled={status==='loading'}>
+                {status==='ok' ? 'Thanks!' : status==='loading' ? 'Sending…' : 'Sign up'}
               </button>
             </div>
             <p className="mt-7 text-xs text-gray-500">© {new Date().getFullYear()} MAI Future. All rights reserved.</p>
