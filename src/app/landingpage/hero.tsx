@@ -1,6 +1,20 @@
+"use client";
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Hero() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle'|'loading'|'ok'|'err'>('idle')
+  async function submit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) })
+      setStatus(res.ok ? 'ok' : 'err')
+    } catch {
+      setStatus('err')
+    }
+  }
   return (
     <section id="hero" className="h-screen flex items-center justify-center bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
@@ -14,14 +28,17 @@ export default function Hero() {
             Advancing lung-health screening through AI-enabled imaging technology and standardized clinical workflows. Strengthening early-detection pathways, supporting clinicians, and expanding access to modern lung-cancer screening across the region.
 
             </p>
-            <form className="flex w-full max-w-lg items-center gap-2 justify-start lg:justify-start">
+            <form onSubmit={submit} className="flex w-full max-w-lg items-center gap-2 justify-start lg:justify-start">
               <input
                 type="email"
                 placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
               />
-              <button type="button" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800">
-                Submit
+              <button type="submit" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-60" disabled={status==='loading'}>
+                {status==='ok' ? 'Thanks!' : status==='loading' ? 'Sending…' : 'Submit'}
               </button>
             </form>
           </div>

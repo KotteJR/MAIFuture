@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 type EmailModalProps = {
   open: boolean;
@@ -9,6 +9,19 @@ type EmailModalProps = {
 };
 
 export default function EmailModal({ open, onClose, email }: EmailModalProps) {
+  const [value, setValue] = useState('');
+  const [status, setStatus] = useState<'idle'|'loading'|'ok'|'err'>('idle');
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: value }) });
+      setStatus(res.ok ? 'ok' : 'err');
+    } catch {
+      setStatus('err');
+    }
+  }
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -28,14 +41,17 @@ export default function EmailModal({ open, onClose, email }: EmailModalProps) {
           Email us directly at <a className="font-medium text-black underline" href={`mailto:${email}`}>{email}</a> or leave your
           email below and we will reach out.
         </p>
-        <form className="mt-4 flex gap-2">
+        <form onSubmit={submit} className="mt-4 flex gap-2">
           <input
             type="email"
             placeholder="your@email.com"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            required
             className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
           />
-          <button type="button" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800">
-            Submit
+          <button type="submit" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-60" disabled={status==='loading'}>
+            {status==='ok' ? 'Thanks!' : status==='loading' ? 'Sending…' : 'Submit'}
           </button>
         </form>
         <button onClick={onClose} className="absolute right-3 top-3 h-8 w-8 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">×</button>
