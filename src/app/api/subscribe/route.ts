@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     const tasks: Promise<{ name: string; ok: boolean; status?: number; body?: string }>[] = []
 
     // 1) Send to a webhook (Zapier/Make/Sheets) if provided
-    const webhookUrl = process.env.SUBSCRIBE_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbzepsh9_jyZnBULlhv4gS7Ou0XPZZHiyFVtVDm1RCblOS6zhO5zem5zLH9O5fQGwCc/exec'
+    const webhookUrl = process.env.SUBSCRIBE_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbw5YL5XOItqj3OJKNw0bSnzWOdmIsVLo4ASTEE8Uo3N1p7ReZPhKMdIueQsZlRNVcI/exec'
     if (webhookUrl) {
       tasks.push(
         (async () => {
