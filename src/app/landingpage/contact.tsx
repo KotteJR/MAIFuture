@@ -15,7 +15,7 @@ export default function Contact() {
       <div className="max-w-7xl px-6 md:px-8 lg:px-12 mx-auto">
         {/* Intro */}
         <div className="mb-10 ">
-          <h2 className="text-3xl lg:text-4xl text-black leading-tight">
+          <h2 className="text-3xl lg:text-4xl leading-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
             Get in touch with us <br />today to learn more
           </h2>
         </div>

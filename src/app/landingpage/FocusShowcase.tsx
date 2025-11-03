@@ -18,7 +18,7 @@ export default function FocusShowcase() {
         {/* Top split: copy left, image right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center py-12">
           <div>
-            <h2 className="mt-4 text-3xl tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl sm:text-4xl tracking-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
             Our Strategic Focus Areas
             </h2>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">

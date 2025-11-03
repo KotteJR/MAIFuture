@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="grid items-center gap-8 md:grid-cols-2">
           {/* Left Column */}
           <div className="flex flex-col items-start text-left md:items-start md:text-left">
-            <h1 className="my-6 text-pretty text-4xl lg:text-5xl max-w-lg">
+            <h1 className="my-6 text-pretty font-medium text-4xl lg:text-5xl max-w-lg leading-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
               From Risk To Relief
             </h1>
             <p className="text-gray-600 mb-8 max-w-lg lg:text-lg">
