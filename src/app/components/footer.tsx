@@ -3,9 +3,9 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer className="bg-[#FAFAFA]">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Top: brand + nav + cta */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
@@ -39,14 +39,10 @@ export default function Footer() {
                 Sign up
               </button>
             </div>
+            <p className="mt-7 text-xs text-gray-500">© {new Date().getFullYear()} MAI Future. All rights reserved.</p>
           </form>
         </div>
-
-        {/* Bottom bar */}
-        <div className="mt-10 flex flex-col gap-3 pt-6 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} MAI Future. All rights reserved.</p>
-          </div>
-        </div>
+      </div>
     </footer>
   );
 }
