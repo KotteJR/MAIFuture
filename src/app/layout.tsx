@@ -12,14 +12,15 @@ export const metadata: Metadata = {
     template: '%s | MAI Future',
   },
   description:
-    'MAI Future builds AI‑powered lung cancer screening for North Macedonia — earlier detection, clinical confidence, and scalable operations.',
+    'AI‑enabled imaging platform supporting CT scan analysis and early lung cancer screening for North Macedonia healthcare.',
   keywords: [
     'MAI Future',
     'lung cancer screening',
-    'AI healthcare',
-    'North Macedonia',
     'early detection',
-    'medical AI',
+    'AI-enabled imaging',
+    'CT scan analysis',
+    'North Macedonia healthcare',
+    'medical screening platform',
   ],
   openGraph: {
     type: 'website',
@@ -105,6 +106,21 @@ export default function RootLayout({
               target: 'https://www.google.com/search?q=site:maifuture.com+{search_term_string}',
               'query-input': 'required name=search_term_string',
             },
+          })}
+        </Script>
+        {/* JSON-LD: SoftwareApplication (medical screening platform) */}
+        <Script id="ld-software" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'MAI Future Screening Platform',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web',
+            description:
+              'AI-enabled imaging platform supporting CT scan analysis and lung cancer screening workflows for North Macedonia healthcare.',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            url: 'https://www.maifuture.com/',
+            publisher: { '@type': 'Organization', name: 'MAI Future' },
           })}
         </Script>
       </head>

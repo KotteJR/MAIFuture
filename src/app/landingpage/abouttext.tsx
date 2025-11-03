@@ -10,7 +10,7 @@ export default function About() {
   useEffect(() => {}, []);
 
   return (
-    <section className="bg-white md:pb-12 pb-6">
+    <section id="about" className="bg-white md:pb-12 pb-6">
       <div className="max-w-7xl px-6 md:px-8 lg:px-12 mx-auto">
 
         <h2 className="text-4xl lg:text-5xl font-italic text-black leading-tight mb-6">
@@ -22,7 +22,7 @@ export default function About() {
             <div className="max-w-7xl mx-auto">
               <ScrollWordReveal
                 className="text-justify text-xl leading-[1.85] md:text-2xl md:leading-[2]"
-                text={`Early detection of lung cancer can increase survival rates by up to 90%. Our AI‑powered solution will make screening more accessible, accurate, and efficient.\n\n"From Risk To Relief" — our mission is to transform lives through technology. We are working on a groundbreaking solution to establish the clinical, operational, and technological foundation for AI‑powered lung cancer screening in North Macedonia. Our comprehensive approach will transform early detection and save lives through innovative technology.\n\nWe are building a clinically robust and operationally scalable program for AI‑assisted lung cancer screening in North Macedonia. We combine standardized data capture, privacy‑first cloud infrastructure, and validated diagnostic models to help clinicians identify risk earlier, reduce time‑to‑diagnosis, and deliver confident care—moving people from risk to relief.\n\nWe’re preparing a comprehensive solution that providers can launch and scale with minimal setup: secure data workflows, clinician‑friendly review tools, and continuous model improvement informed by real‑world use. Be the first to know when we go live and help us make advanced screening the standard of care across the region.`}
+                text={`Lung cancer remains one of the most challenging diseases in the region, with late diagnosis contributing to high mortality rates. Increasing access to structured screening programs can improve early identification and dramatically elevate survival outcomes. \n\nMAI Future is developing an integrated lung-screening platform designed to support clinicians in identifying early signs of lung disease with enhanced efficiency, accuracy, and diagnostic confidence. \n\nOur approach unites advanced imaging technology, standardized assessment protocols, and secure data infrastructure to strengthen public-health outcomes in North Macedonia. We are building a clinically driven and operationally scalable framework for AI-supported lung-cancer screening, designed in collaboration with regional health stakeholders.  \n\nThe platform combines structured CT-scan workflows, privacy-first medical cloud infrastructure, and validated imaging-support tools to help accelerate clinical decisions and shorten time-to-care. Our end-to-end system will enable seamless adoption in hospitals and diagnostic centers, offering secure data processing, clinician-focused review tools, and continuous performance refinement informed by real-world practice.  \n\nJoin our waitlist to stay informed as we bring advanced lung-screening innovation to healthcare institutions across the region.`}
               />
             </div>
           </div>

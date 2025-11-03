@@ -11,7 +11,8 @@ export default function Hero() {
               From Risk To Relief
             </h1>
             <p className="text-gray-600 mb-8 max-w-lg lg:text-lg">
-            Revolutionizing healthcare through AI-powered lung cancer screening solutions. Building the future of early detection and prevention in North Macedonia.
+            Advancing lung-health screening through AI-enabled imaging technology and standardized clinical workflows. Strengthening early-detection pathways, supporting clinicians, and expanding access to modern lung-cancer screening across the region.
+
             </p>
             <form className="flex w-full max-w-lg items-center gap-2 justify-start lg:justify-start">
               <input
