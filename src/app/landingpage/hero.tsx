@@ -23,10 +23,10 @@ export default function Hero() {
         <div className="grid items-center gap-8 md:grid-cols-2">
           {/* Left Column */}
           <div className="flex mt-10 md:mt-0 flex-col items-start text-left md:items-start md:text-left pb-6 md:pb-0">
-            <h1 className="text-pretty font-medium text-3xl lg:text-5xl w-full md:max-w-lg leading-tight inline-block pb-4 md:pb-1 mb-2 md:mb-0 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent mt-32 md:mt-0">
+            <h1 className="text-pretty font-medium text-3xl lg:text-5xl w-full md:max-w-lg leading-tight inline-block pb-4 md:pb-2 mb-2 md:mb-4 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent mt-32 md:mt-0">
               From Risk To Relief
             </h1>
-            <p className="text-gray-600 mb-8 max-w-lg text-md text-justify">
+            <p className="text-gray-600 mb-8 max-w-lg text-md text-justify md:text-left md:pl-1 lg:text-left">
             Advancing lung-health screening through AI-enabled imaging technology and standardized clinical workflows. Strengthening early-detection pathways, supporting clinicians, and expanding access to modern lung-cancer screening across the region.
 
             </p>
