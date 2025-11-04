@@ -8,7 +8,7 @@ export default function FocusShowcase() {
     { icon: Heart, title: 'Institutional Partnerships', description: 'Working with hospitals, diagnostic centers, and public-health networks to standardize lung-screening pathways.' },
     { icon: Users, title: 'Population Reach', description: 'Extending early-screening availability across both urban and underserved regional communities.' },
     { icon: Globe, title: 'Regional Scalability', description: 'Building infrastructure for long-term expansion and cross-border adoption across Southeast Europe.' },
-    { icon: Shield, title: 'AI Product Development', description: 'Advanced medical-imaging tools to support accurate, efficient CT interpretation for earlier clinical insight.' },
+    { icon: Shield, title: 'AI Development', description: 'Advanced medical-imaging tools to support accurate, efficient CT interpretation for earlier clinical insight.' },
 
   ];
 
@@ -21,7 +21,7 @@ export default function FocusShowcase() {
             <h2 className="mt-4 text-3xl sm:text-4xl tracking-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
             Our Strategic Focus Areas
             </h2>
-            <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
+            <p className="mt-4 text-md text-gray-600 leading-relaxed max-w-lg text-justify">
               &quot;From Risk To Relief&quot; reflects our commitment to advancing earlier detection, improving clinical decision-making, and enabling compassionate, high-quality care for every patient and provider we support.
             </p>
           </div>
@@ -34,14 +34,14 @@ export default function FocusShowcase() {
         </div>
 
         {/* Icons grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-8 md:mt-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 py-10 md:mt-14">
           {items.map(({ icon: Icon, title, description }, i) => (
-            <div key={i} className="flex flex-col items-center text-center md:text-left md:items-start">
+            <div key={i} className="flex flex-col text-left">
               <div className="h-12 w-12 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center">
                 <Icon className="h-6 w-6" strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg mt-3 text-gray-900">{title}</h3>
-              <p className="text-md text-gray-600 mt-1 leading-relaxed">{description}</p>
+              <h3 className="text-md mt-3 text-gray-900">{title}</h3>
+              <p className="text-sm md:text-md text-gray-600 mt-3 leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
