@@ -34,7 +34,7 @@ export default function FocusShowcase() {
         </div>
 
         {/* Icons grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 py-10 md:mt-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 py-10 md:mt-10">
           {items.map(({ icon: Icon, title, description }, i) => (
             <div key={i} className="flex flex-col text-left">
               <div className="h-12 w-12 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center">

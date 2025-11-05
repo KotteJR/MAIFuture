@@ -13,9 +13,9 @@ export default function About() {
     <section id="about" className="bg-white md:pb-12">
       <div className="max-w-7xl px-6 md:px-8 lg:px-12 mx-auto">
 
-        <h2 className="text-3xl lg:text-5xl font-italic leading-tight inline-block pb-1 mb-6 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
+        <h1 className="text-3xl lg:text-5xl font-italic leading-tight inline-block pb-1 mb-6 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
         Why this matters
-          </h2>
+          </h1>
 
         {/* Intro Paragraph with Scroll Fill Effect */}
           <div className="">
