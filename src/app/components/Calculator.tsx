@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fetchRisk } from "@/src/lib/supabaseClient";
+import { useLanguage } from "./LanguageProvider";
 import { generateLifestyleExplanation } from "@/src/lib/openaiExplanation";
 
 type CountriesToCities = Record<string, string[]>;
@@ -52,6 +53,7 @@ const countryToCode: Record<string, string> = {
 };
 
 export default function Calculator() {
+  const { t } = useLanguage();
   const [packsPerDay, setPacksPerDay] = useState<string>("");
   const [yearsSmoked, setYearsSmoked] = useState<string>("");
   const [countriesToCities, setCountriesToCities] = useState<CountriesToCities>({});
@@ -192,17 +194,17 @@ export default function Calculator() {
     (!quit || parseFloat(stoppedAgoYears || '0') >= 0);
 
   return (
-    <section className="bg-white md:py-20 py-12">
+    <section id="Calculator" className="bg-white md:py-20 py-12">
       <div className="max-w-7xl px-6 md:px-8 lg:px-12 mx-auto">
         <div className="mb-4">
-          <h2 className="text-3xl lg:text-4xl font-italic leading-tight inline-block pb-1 mb-4 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent"> Try our Lifestyle Risk Calculator</h2>
+          <h2 className="text-3xl lg:text-4xl font-italic leading-tight inline-block pb-1 mb-4 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">{t('calculator.title')}</h2>
         </div>
 
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 grid grid-cols-1 gap-6">
           {riskStatus === 'ok' && riskValue !== null ? (
             <div className="flex flex-col items-start gap-6">
               <div className="flex items-center gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Lifestyle risk</h3>
+                <h3 className="text-xl font-semibold text-gray-900">{t('calculator.result_label')}</h3>
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold border ${getRiskBadgeColor(riskValue)}`}>
                   {riskValue.toFixed(2)}
                 </span>
@@ -212,9 +214,9 @@ export default function Calculator() {
               </div>
               {showTooltip && (
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-700 space-y-2 w-full">
-                  <p className="font-semibold">How is this calculated?</p>
-                  <p>This lifestyle risk score is calculated based on your smoking history, age, air quality exposure (e.g. PM2.5, NO2), and presence of comorbidities like asthma or diabetes. It is derived from research-backed logistic regression models used in public health studies, and reflects relative exposure to lung health risk factors.</p>
-                  <p className="text-xs text-gray-600 italic"><strong>We do NOT provide a medical diagnosis or a percentage risk of lung cancer.</strong> This calculator is purely informational and based on publicly available health data correlations. Always consult your physician for clinical assessments.</p>
+                  <p className="font-semibold">{t('calculator.tooltip_title')}</p>
+                  <p>{t('calculator.tooltip_body')}</p>
+                  <p className="text-xs text-gray-600 italic">{t('calculator.tooltip_note')}</p>
                 </div>
               )}
               {explanationLoading ? (
@@ -231,14 +233,14 @@ export default function Calculator() {
               <div className="max-w-md w-full space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Age</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.age')}</label>
                   <input type="number" min={0} step="1" value={age} onChange={(e) => setAge(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" placeholder="e.g. 55" required />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Gender</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.gender')}</label>
                   <div className="relative">
                     <select value={gender} onChange={(e) => setGender(e.target.value)} className="w-full appearance-none bg-none rounded-lg border border-gray-300 bg-white pr-10 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}>
-                      <option value="">Select gender</option>
+                      <option value="">{t('calculator.gender_select')}</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -249,11 +251,11 @@ export default function Calculator() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Packs per day</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.packs_per_day')}</label>
                   <input type="number" min={0} step="0.1" value={packsPerDay} onChange={(e) => setPacksPerDay(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" placeholder="e.g. 1.0" required />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Years smoked</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.years_smoked')}</label>
                   <input type="number" min={0} step="0.5" value={yearsSmoked} onChange={(e) => setYearsSmoked(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" placeholder="e.g. 10" required />
                 </div>
               </div>
@@ -262,14 +264,14 @@ export default function Calculator() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <input id="quit" type="checkbox" checked={quit} onChange={(e) => setQuit(e.target.checked)} />
-                    <label htmlFor="quit" className="text-sm text-gray-700">I have quit smoking</label>
+                    <label htmlFor="quit" className="text-sm text-gray-700">{t('calculator.quit_label')}</label>
                   </div>
-                  <input type="number" min={0} step="0.5" value={stoppedAgoYears} onChange={(e) => setStoppedAgoYears(e.target.value)} disabled={!quit} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200 disabled:bg-gray-100" placeholder="How long ago did you stop? (years)" />
+                  <input type="number" min={0} step="0.5" value={stoppedAgoYears} onChange={(e) => setStoppedAgoYears(e.target.value)} disabled={!quit} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200 disabled:bg-gray-100" placeholder={t('calculator.stopped_placeholder')} />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Other diseases</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.other_diseases')}</label>
                   <div className="relative">
-                    <input type="text" value={diseaseInput} onChange={(e) => setDiseaseInput(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 pr-20 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" placeholder="e.g. COPD" />
+                    <input type="text" value={diseaseInput} onChange={(e) => setDiseaseInput(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 pr-20 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" placeholder={t('calculator.other_diseases_ph')} />
                     <button type="button" onClick={() => { const v = diseaseInput.trim(); if (v && !diseases.includes(v)) { setDiseases([...diseases, v]); setDiseaseInput(''); } }} className="absolute right-2 top-1/2 -translate-y-1/2 h-7 mt-0.5 px-3 rounded-md bg-black text-xs text-white disabled:opacity-60" disabled={!diseaseInput.trim()}>Add</button>
                   </div>
                   {diseases.length > 0 ? (
@@ -284,7 +286,7 @@ export default function Calculator() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">Country (Europe)</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.country')}</label>
                   <div className="relative">
                     <select value={country} onChange={(e) => { setCountry(e.target.value); setCity(''); }} className="w-full appearance-none bg-none rounded-lg border border-gray-300 bg-white pr-10 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}>
                       {countries.map((ctry) => (<option key={ctry} value={ctry}>{ctry}</option>))}
@@ -293,10 +295,10 @@ export default function Calculator() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-1">City</label>
+                  <label className="block text-sm text-gray-700 mb-1">{t('calculator.city')}</label>
                   <div className="relative">
                     <select value={city} onChange={(e) => setCity(e.target.value)} className="w-full appearance-none bg-none rounded-lg border border-gray-300 bg-white pr-10 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200" style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}>
-                      <option value="">Select a city</option>
+                      <option value="">{t('calculator.select_city')}</option>
                       {cities.map((c) => (<option key={c} value={c}>{c}</option>))}
                     </select>
                     <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.207l3.71-2.977a.75.75 0 11.94 1.172l-4.2 3.367a.75.75 0 01-.94 0l-4.2-3.367a.75.75 0 01-.08-1.192z" clipRule="evenodd" /></svg>
@@ -307,7 +309,7 @@ export default function Calculator() {
               
 
               <div>
-                <button onClick={onCalculate} disabled={submitting || riskStatus==='loading' || !canCalculate} className="rounded-lg bg-black px-4 py-2 text-sm text-white disabled:opacity-60">{(submitting || riskStatus==='loading') ? 'Calculating…' : 'Calculate'}</button>
+                <button onClick={onCalculate} disabled={submitting || riskStatus==='loading' || !canCalculate} className="rounded-lg bg-black px-4 py-2 text-sm text-white disabled:opacity-60">{(submitting || riskStatus==='loading') ? t('calculator.calculating') : t('calculator.calculate')}</button>
               </div>
               </div>
 
@@ -315,17 +317,11 @@ export default function Calculator() {
               <div className="relative w-full flex">
                 <div className="absolute -inset-6 z-0 rounded-2xl bg-gradient-to-r from-[#C7E9FB]/70 via-[#89BFE2]/60 to-[#3B82F6]/55 opacity-30 blur-3xl"></div>
                 <div className="relative z-10 rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm h-full flex flex-col justify-start">
-                  <h3 className="text-xl font-medium text-gray-900 mb-4">How the calculator works</h3>
+                  <h3 className="text-xl font-medium text-gray-900 mb-4">{t('calculator.right_card_title')}</h3>
                   <div className="text-sm text-gray-700 space-y-4">
-                    <p>
-                      This lifestyle risk score is calculated based on your smoking history, age, air quality exposure (e.g. PM2.5, NO2), and presence of comorbidities like asthma or diabetes. It is derived from research-backed logistic regression models used in public health studies, and reflects relative exposure to lung health risk factors.
-                    </p>
-                    <p className="text-md text-gray-600">
-                      <strong>We do NOT provide a medical diagnosis or a percentage risk of lung cancer.</strong>
-                    </p>
-                    <p className="text-md text-gray-600 italic">
-                    This calculator is purely informational and based on publicly available health data correlations. Always consult your physician for clinical assessments.
-                    </p>
+                    <p>{t('calculator.right_card_para')}</p>
+                    <p className="text-md text-gray-600"><strong>{t('calculator.right_card_note')}</strong></p>
+                    <p className="text-md text-gray-600 italic">{t('calculator.right_card_disclaimer')}</p>
                   </div>
                 </div>
               </div>

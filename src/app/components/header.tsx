@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Home, Grid3X3, Calculator, Mail, Globe, ChevronDown } from 'lucide-react';
+import { useLanguage } from './LanguageProvider'
 
 export default function Header() {
+  const { lang, setLang } = useLanguage();
+  const [langOpen, setLangOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -73,24 +77,42 @@ export default function Header() {
 
           {/* Home Icon */}
           <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="ml-auto w-9 h-9 md:w-10 md:h-10 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-200">
-            <svg className="w-6 h-6 [shape-rendering:geometricPrecision]" fill="none" stroke="currentColor" viewBox="0 0 24 24" vectorEffect="non-scaling-stroke">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
+            <Home className="w-5 h-5" strokeWidth={1.75} />
           </button>
 
           {/* Features Icon */}
           <button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="w-9 h-9 md:w-10 md:h-10 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-200">
-            <svg className="w-6 h-6 [shape-rendering:geometricPrecision]" fill="none" stroke="currentColor" viewBox="0 0 24 24" vectorEffect="non-scaling-stroke">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
+            <Grid3X3 className="w-5 h-5" strokeWidth={1.75} />
+          </button>
+
+          {/* Calculator Icon */}
+          <button onClick={() => document.getElementById('Calculator')?.scrollIntoView({ behavior: 'smooth' })} className="w-9 h-9 md:w-10 md:h-10 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-200">
+            <Calculator className="w-5 h-5" strokeWidth={1.75} />
           </button>
 
           {/* Contact Icon */}
           <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-9 h-9 md:w-10 md:h-10 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-200">
-            <svg className="w-6 h-6 [shape-rendering:geometricPrecision]" fill="none" stroke="currentColor" viewBox="0 0 24 24" vectorEffect="non-scaling-stroke">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
+            <Mail className="w-5 h-5" strokeWidth={1.75} />
           </button>
+
+          {/* Language Selector Dropdown */}
+          <div className="ml-1 relative select-none">
+            <button onClick={() => setLangOpen((v)=>!v)} className="w-9 h-9 md:w-10 md:h-10 bg-white text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+              <span className="text-[11px] font-semibold tracking-wide">{lang==='mk' ? 'MKD' : 'GB'}</span>
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 mt-2 min-w-[140px] bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50" onMouseLeave={() => setLangOpen(false)}>
+                <button onClick={() => { setLang('en'); setLangOpen(false); }} className={`w-full px-3 py-2.5 flex items-center justify-between text-gray-800 hover:bg-gray-50 ${lang==='en' ? 'bg-gray-50' : ''}`}>
+                  <span className="text-xs font-medium">English</span>
+                  <span className="text-[11px] font-semibold tracking-wide">GB</span>
+                </button>
+                <button onClick={() => { setLang('mk'); setLangOpen(false); }} className={`w-full px-3 py-2.5 flex items-center justify-between text-gray-800 hover:bg-gray-50 ${lang==='mk' ? 'bg-gray-50' : ''}`}>
+                  <span className="text-xs font-medium">Македонски</span>
+                  <span className="text-[11px] font-semibold tracking-wide">MKD</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>

@@ -2,13 +2,15 @@
 
 import Image from 'next/image';
 import { Users, Shield, Heart, Globe } from 'lucide-react';
+import { useLanguage } from '../components/LanguageProvider';
 
 export default function FocusShowcase() {
+  const { t } = useLanguage();
   const items = [
-    { icon: Heart, title: 'Institutional Partnerships', description: 'Working with hospitals, diagnostic centers, and public-health networks to standardize lung-screening pathways.' },
-    { icon: Users, title: 'Population Reach', description: 'Extending early-screening availability across both urban and underserved regional communities.' },
-    { icon: Globe, title: 'Regional Scalability', description: 'Building infrastructure for long-term expansion and cross-border adoption across Southeast Europe.' },
-    { icon: Shield, title: 'AI Development', description: 'Advanced medical-imaging tools to support accurate, efficient CT interpretation for earlier clinical insight.' },
+    { icon: Heart, title: t('focus.items.institutional.title'), description: t('focus.items.institutional.desc') },
+    { icon: Users, title: t('focus.items.reach.title'), description: t('focus.items.reach.desc') },
+    { icon: Globe, title: t('focus.items.scalability.title'), description: t('focus.items.scalability.desc') },
+    { icon: Shield, title: t('focus.items.ai.title'), description: t('focus.items.ai.desc') },
 
   ];
 
@@ -18,12 +20,8 @@ export default function FocusShowcase() {
         {/* Top split: copy left, image right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center py-12">
           <div>
-            <h2 className="mt-4 text-3xl sm:text-4xl tracking-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">
-            Our Strategic Focus Areas
-            </h2>
-            <p className="mt-4 text-md text-gray-600 leading-relaxed max-w-lg text-justify">
-              &quot;From Risk To Relief&quot; reflects our commitment to advancing earlier detection, improving clinical decision-making, and enabling compassionate, high-quality care for every patient and provider we support.
-            </p>
+            <h2 className="mt-4 text-3xl sm:text-4xl tracking-tight inline-block pb-1 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent">{t('focus.heading')}</h2>
+            <p className="mt-4 text-md text-gray-600 leading-relaxed max-w-lg text-justify">{t('focus.blurb')}</p>
           </div>
           <div className="relative w-full h-[300px] md:h-[360px] lg:h-[350px]">
             <div className="absolute -inset-8 z-0 rounded-2xl bg-gradient-to-r from-[#C7E9FB]/80 via-[#89BFE2]/70 to-[#3B82F6]/70 opacity-50 blur-3xl"></div>

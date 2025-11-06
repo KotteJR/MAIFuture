@@ -19,7 +19,7 @@ export async function generateLifestyleExplanation(
     const key = apiKey || process.env.NEXT_PUBLIC_OPENAI_API_KEY || "";
     if (!key) {
       return {
-        explanation: "This lifestyle risk score reflects exposure to factors studied in public health research.",
+        explanation: "This screening score reflects exposure to factors studied in lung‑health research. If it appears elevated, consider discussing lung cancer screening with a clinician.",
         error: "no_api_key",
       };
     }
@@ -36,11 +36,11 @@ export async function generateLifestyleExplanation(
           {
             role: "system",
             content:
-              "You explain lifestyle risk scores for lung health in plain language. Context: score reflects relative exposure to factors studied in relation to long-term lung health and development of lung cancer (e.g., smoking intensity and duration, second‑hand smoke, air pollution like PM2.5/NO2, occupational dust/fumes, and respiratory comorbidities). Do NOT provide medical diagnoses, probabilities, or percentages. Avoid implying certainty or clinical conclusions. Offer neutral, non‑directive wording and suggest general, non‑medical steps (e.g., reducing exposure, smoke‑free environments, discussing screening with a clinician). Keep responses concise.",
+              "You explain screening readiness for lung health in plain language. Context: score reflects relative exposure to factors studied in relation to long‑term lung health and development of lung cancer (e.g., smoking intensity/duration, second‑hand smoke, PM2.5/NO2, occupational dust/fumes, respiratory comorbidities). Do NOT provide diagnoses, probabilities, or percentages. Avoid certainty or clinical conclusions. If the score is on the higher side, include a neutral sentence suggesting the user consider discussing lung cancer screening eligibility with a clinician. Keep it concise (2–3 sentences).",
           },
           {
             role: "user",
-            content: `In 2–3 sentences, explain what a lifestyle risk score of ${score.toFixed(2)} means specifically for lung health and the development of lung cancer over time. Use plain language, mention that higher scores generally reflect more exposure to studied risk factors (smoking, pollution, etc.), avoid any diagnosis or numerical risk.`,
+            content: `Explain, in 2–3 sentences, what a screening readiness score of ${score.toFixed(2)} means for lung health. Mention that higher scores generally reflect more exposure to studied risk factors (smoking, pollution, etc.). Avoid any diagnosis or numerical risk. If appropriate, suggest discussing screening with a clinician.`,
           },
         ],
         max_tokens: 150,
@@ -51,7 +51,7 @@ export async function generateLifestyleExplanation(
     if (!response.ok) {
       const err = await response.text();
       return {
-        explanation: "This score reflects exposure to lifestyle factors studied in public health research.",
+        explanation: "This screening score reflects exposure to factors studied in lung‑health research. If elevated, consider discussing screening eligibility with a clinician.",
         error: err,
       };
     }
@@ -63,12 +63,12 @@ export async function generateLifestyleExplanation(
       return { explanation };
     }
     return {
-      explanation: "This score reflects exposure to lifestyle factors studied in public health research.",
+      explanation: "This screening score reflects exposure to factors studied in lung‑health research. If elevated, consider discussing screening eligibility with a clinician.",
       error: "empty_response",
     };
   } catch (e: any) {
     return {
-      explanation: "This score reflects exposure to lifestyle factors studied in public health research.",
+      explanation: "This screening score reflects exposure to factors studied in lung‑health research. If elevated, consider discussing screening eligibility with a clinician.",
       error: e?.message || "unknown_error",
     };
   }

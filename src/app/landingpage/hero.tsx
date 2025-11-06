@@ -1,8 +1,10 @@
 "use client";
 import Image from 'next/image'
 import { useState } from 'react'
+import { useLanguage } from '../components/LanguageProvider'
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle'|'loading'|'ok'|'err'>('idle')
   async function submit(e: React.FormEvent) {
@@ -23,24 +25,19 @@ export default function Hero() {
         <div className="grid items-center gap-8 md:grid-cols-2">
           {/* Left Column */}
           <div className="flex mt-10 md:mt-0 flex-col items-start text-left md:items-start md:text-left pb-6 md:pb-0">
-            <h1 className="text-pretty font-medium text-3xl lg:text-5xl w-full md:max-w-lg leading-tight inline-block pb-4 md:pb-2 mb-2 md:mb-4 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent mt-32 md:mt-0">
-              From Risk To Relief
-            </h1>
-            <p className="text-gray-600 mb-8 max-w-lg text-md text-justify md:text-left md:pl-1 lg:text-left">
-            Advancing lung-health screening through AI-enabled imaging technology and standardized clinical workflows. Strengthening early-detection pathways, supporting clinicians, and expanding access to modern lung-cancer screening across the region.
-
-            </p>
+            <h1 className="text-pretty font-medium text-3xl lg:text-5xl w-full md:max-w-lg leading-tight inline-block pb-4 md:pb-2 mb-2 md:mb-4 bg-gradient-to-r from-[#BFE3F8] via-[#5FADEB] to-[#1D4ED8] bg-clip-text text-transparent mt-32 md:mt-0">{t('hero.title')}</h1>
+            <p className="text-gray-600 mb-8 max-w-lg text-md text-justify md:text-left md:pl-1 lg:text-left">{t('hero.subtitle')}</p>
             <form onSubmit={submit} className="flex w-full max-w-lg items-center gap-2 justify-start lg:justify-start">
               <input
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t('hero.email_ph')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
               />
               <button type="submit" className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-60" disabled={status==='loading'}>
-                {status==='ok' ? 'Thanks!' : status==='loading' ? 'Sending…' : 'Submit'}
+                {status==='ok' ? t('hero.thanks') : status==='loading' ? t('hero.sending') : t('hero.submit')}
               </button>
             </form>
           </div>

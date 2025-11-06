@@ -1,0 +1,68 @@
+{
+  "calculator": {
+    "title": "Lung Cancer Screening Eligibility Calculator",
+    "age": "Age",
+    "gender": "Gender",
+    "gender_select": "Select gender",
+    "packs_per_day": "Packs per day",
+    "years_smoked": "Years smoked",
+    "quit_label": "I have quit smoking",
+    "stopped_placeholder": "How long ago did you stop? (years)",
+    "other_diseases": "Other diseases",
+    "other_diseases_ph": "e.g. COPD",
+    "country": "Country (Europe)",
+    "city": "City",
+    "select_city": "Select a city",
+    "calculate": "Calculate",
+    "calculating": "Calculating…",
+    "result_label": "Screening Eligibility Score",
+    "tooltip_title": "How is this calculated?",
+    "tooltip_body": "This screening eligibility score is calculated using algorithms based on PLCOm2012 and National Lung Screening Trial (NLST) selection criteria, which include smoking history (pack-years), years since quitting, age, and other risk factors. The algorithm also incorporates air quality exposure (e.g. PM2.5, NO2) and presence of comorbidities like asthma or diabetes to assess relative exposure to lung health risk factors.",
+    "tooltip_note": "We do NOT provide a medical diagnosis or a percentage risk of lung cancer. This calculator is purely informational and based on publicly available health data correlations. If your score is higher, consider discussing lung cancer screening eligibility with a clinician.",
+    "right_card_title": "How this screening calculator works",
+    "right_card_para": "This screening eligibility score is calculated using algorithms based on PLCOm2012 and National Lung Screening Trial (NLST) selection criteria, which include smoking history (pack-years), years since quitting, age, and other risk factors. The algorithm also incorporates air quality exposure (e.g. PM2.5, NO2) and presence of comorbidities like asthma or diabetes to assess relative exposure to lung health risk factors.",
+    "right_card_note": "We do NOT provide a medical diagnosis or a percentage risk of lung cancer.",
+    "right_card_disclaimer": "This calculator is purely informational and based on publicly available health data correlations. If your score is higher, consider discussing lung cancer screening eligibility with a clinician."
+  }
+  ,
+  "hero": {
+    "title": "From Risk To Relief",
+    "subtitle": "Advancing lung-health screening through AI-enabled imaging technology and standardized clinical workflows. Strengthening early-detection pathways, supporting clinicians, and expanding access to modern lung-cancer screening across the region.",
+    "email_ph": "your@email.com",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "thanks": "Thanks!"
+  },
+  "focus": {
+    "heading": "Our Strategic Focus Areas",
+    "blurb": "\"From Risk To Relief\" reflects our commitment to advancing earlier detection, improving clinical decision-making, and enabling compassionate, high-quality care for every patient and provider we support.",
+    "items": {
+      "institutional": {"title": "Institutional Partnerships", "desc": "Working with hospitals, diagnostic centers, and public-health networks to standardize lung-screening pathways."},
+      "reach": {"title": "Population Reach", "desc": "Extending early-screening availability across both urban and underserved regional communities."},
+      "scalability": {"title": "Regional Scalability", "desc": "Building infrastructure for long-term expansion and cross-border adoption across Southeast Europe."},
+      "ai": {"title": "AI Development", "desc": "Advanced medical-imaging tools to support accurate, efficient CT interpretation for earlier clinical insight."}
+    }
+  },
+  "about": {
+    "heading": "Why this matters",
+    "body": "Lung cancer remains one of the most challenging diseases in the region, with late diagnosis contributing to high mortality rates. Increasing access to structured screening programs can improve early identification and dramatically elevate survival outcomes.\n\nMAI Future is developing an integrated lung-screening platform designed to support clinicians in identifying early signs of lung disease with enhanced efficiency, accuracy, and diagnostic confidence.\n\nOur approach unites advanced imaging technology, standardized assessment protocols, and secure data infrastructure to strengthen public-health outcomes in North Macedonia. We are building a clinically driven and operationally scalable framework for AI-supported lung-cancer screening, designed in collaboration with regional health stakeholders.\n\nThe platform combines structured CT-scan workflows, privacy-first medical cloud infrastructure, and validated imaging-support tools to help accelerate clinical decisions and shorten time-to-care. Our end-to-end system will enable seamless adoption in hospitals and diagnostic centers, offering secure data processing, clinician-focused review tools, and continuous performance refinement informed by real-world practice.\n\nJoin our waitlist to stay informed as we bring advanced lung-screening innovation to healthcare institutions across the region."
+  },
+  "contact": {
+    "heading": "Get in touch with us <br />today to learn more",
+    "cards": {
+      "updates": {"title": "Stay Updated", "desc": "Join the waitlist and be the first to know about launches and milestones.", "cta": "Request updates"},
+      "support": {"title": "Support the Cause", "desc": "Help accelerate AI-powered lung cancer screening in North Macedonia.", "cta": "Get involved"},
+      "general": {"title": "General Inquiries", "desc": "For anything else, reach out and we’ll get back to you promptly.", "cta": "Contact us"}
+    }
+  },
+  "modal": {
+    "title": "Stay in touch",
+    "body": "Email us directly at {email} or leave your email below and we will reach out.",
+    "email_ph": "your@email.com",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "thanks": "Thanks!"
+  }
+}
+
+
